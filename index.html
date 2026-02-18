@@ -225,6 +225,9 @@ body {
 </div>
 </div>
 
+<audio id="bgMusic" src="music1.mp3" loop></audio>
+
+
 <script>
 
 /* =======================
@@ -414,7 +417,34 @@ showLine();
 
 </script>
 
+<script>
+const bgMusic = document.getElementById("bgMusic");
+
+// Restore last playback time
+const savedTime = localStorage.getItem("musicTime");
+if (savedTime) {
+    bgMusic.currentTime = parseFloat(savedTime);
+}
+
+// Try autoplay
+function startMusic() {
+    bgMusic.play().catch(() => {
+        // If autoplay blocked, wait for user interaction
+        document.addEventListener("click", () => {
+            bgMusic.play();
+        }, { once: true });
+    });
+}
+
+startMusic();
+
+// Save playback time continuously
+setInterval(() => {
+    localStorage.setItem("musicTime", bgMusic.currentTime);
+}, 1000);
+</script>
+
+
 
 </body>
 </html>
-
