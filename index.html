@@ -244,11 +244,11 @@ const postRecapScript = [
   { speaker: "me", text: "That was our lore." },
   { speaker: "me", text: "And honestly..." },
   { speaker: "me", text: "I’d relive every part with you." },
-  { speaker: "me", text: "Alright so now it's a new day and I'm working on this again..." }
+  { speaker: "me", text: "Alright so now it's a new day and I'm working on this again, and I thought hmmm maybe this is focused too much on me and you, when it is your birthday so it should be about you. And what goes in a good birthday wish, so bismillah lets go to the next part which is focused on why you are zarah hamid to me, and what makes you special from my POV. (sorry for the explanation im just telling u my thought process))" }
 ];
 
 // Sample dialogue AFTER returning from Why I Like You page
-const afterWhyILikeU = [
+const afterabout = [
   { speaker: "me", text: "Back from the lore and what you mean to me, and if you prefer a simple birthday wish. here goes nothing. happy birthday partner, hope u have a great day and year ahead!! the real OG birthday wish haha. Serious talk now, I really hope ur day is as special as you are and this year is the happiest year of your life. I wish and pray that Allah Miyan always keeps you happy and smiling always in life, this year and for all the years to come. May you have many such years, and may I be always there to sing happy birthday for you. Thankyou for bringing all the joy in my life, your presence lights up rooms and conversations for me, wherever I go. I also wish you and your rib cage a very best of healths, and I hope that this year is a healthy year for u bcs sehat hai tou jaan hai, and jaan hai tou jahan hai. I wish and pray that p weeks are easier for you this year, and that ur iron levels skyrocket and ur pait dard is less and that the yearly flu does not get to u ever again. I wish and pray a very successful professional year for you, may you always continue being the strong girl boss baddie that you are, and may you achieve whatever u have in ur heart and dont tell anyone. Anyways, enough of the serious and 'its about u' talk and enough of me being decent, so um I wish and hope that I get to recreate the 'i make life hard' t-shirts with you, and twin funky socks with you, and exchange what colour underwear we are wearing, and observe the naara of ur pjs, and check out ur ass (metaphorically, unless hehe wink) in the fit checks, and drool over ur lockets, and meet u again at cbtl. I love you more than this birthday wish or any other thing or effort can ever potray. My life has been the best ever since feb 19, 2025 and you are a very big reason. Thankyou for exisitng, thankyou for doing everything that u do for us, thanku for laughing and making me laugh. Forever ur no.1 simp, supporter, fanboy, pervert, and lover. I love you and I hope that somebody I can really embody that love, give u all the love and care that u deserve, and i hope and pray that Allah miyan gives me the opportunity to do so. Manifesting celebrating all ur birthdays with you, and like u said 80th birthday with no teeth and ur dentures fall off when u try to blow the candles, I hope I am present at that moment. You are always going to be my twin, my soulmate, and my first and last love. Sorry for the incoherence, I am not thinking and just typing bcs if I think, then it will not be raw emotions. Thankyou for the 'hangout when' text and for everything that followed, I love you more than you will ever know, happy birthday once again to my gorgiii, kachra rani, labubu, chikni, pookie, and jaanuest jaan, I love you forever and always, this day until the last of my days." },
 ];
 
@@ -275,7 +275,7 @@ const aboutBtn = document.getElementById("aboutBtn");
 
 /* About You button (Why I Like You page) */
 aboutBtn.addEventListener("click", () => {
-  window.location.href = "whyilikeu.html";
+  window.location.href = "about.html";
 });
 
 /* =======================
@@ -396,7 +396,7 @@ const fromMindMap = params.get("fromMindMap");
 
 // Decide which script to load
 if(fromMindMap === "true"){
-  activeScript = afterWhyILikeU;
+  activeScript = afterabout;
   index = 0;
 }else if(fromRecap === "true"){
   activeScript = postRecapScript;
