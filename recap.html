@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Our Recap 💖</title>
+
+<style>
+
+/* ===============================
+   GLOBAL
+================================ */
+
+body{
+  margin:0;
+  min-height:100vh;
+  font-family: "Comic Sans MS", cursive;
+  background-color:#ffd6e8;
+
+  /* FULL POLKA DOT PATTERN */
+  background-image:
+    radial-gradient(#ff4d6d 3px, transparent 3px);
+  background-size:40px 40px;
+
+  display:flex;
+  justify-content:center;
+}
+
+.container{
+  width:90%;
+  max-width:800px;
+  padding:40px 0 120px;
+}
+
+/* ===============================
+   START TILE
+================================ */
+
+.start-tile{
+  background:#fff0f7;
+  border-radius:25px;
+  padding:30px;
+  text-align:center;
+  box-shadow:0 0 20px rgba(255,105,180,0.4);
+  cursor:pointer;
+  animation:pulse 2s infinite;
+}
+
+.start-tile:hover{
+  transform:scale(1.05);
+}
+
+/* ===============================
+   TIMELINE
+================================ */
+
+.timeline{
+  margin-top:60px;
+  border-left:5px solid #ff4d6d;
+  padding-left:30px;
+}
+
+.event{
+  background:#ffe6f0;
+  margin-bottom:30px;
+  padding:18px 22px;
+  border-radius:18px;
+  box-shadow:0 0 10px rgba(0,0,0,0.1);
+  cursor:pointer;
+  opacity:0;
+  transform:translateY(30px);
+  transition:0.6s;
+}
+
+.event.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.event:hover{
+  transform:scale(1.03);
+  box-shadow:0 0 18px rgba(255,77,109,0.6);
+}
+
+.event h3{
+  margin:0;
+  color:#ff4d6d;
+}
+
+.event p{
+  margin-top:10px;
+  display:none;
+}
+
+.event.open p{
+  display:block;
+}
+
+/* ===============================
+   BACK BUTTON
+================================ */
+
+#backBtn{
+  display:none;
+  margin:50px auto 0;
+  padding:12px 28px;
+  background:#ffb6c1;
+  border:none;
+  border-radius:20px;
+  font-size:18px;
+  cursor:pointer;
+  box-shadow:0 4px 8px rgba(0,0,0,0.2);
+  transition:0.3s;
+}
+
+#backBtn:hover{
+  transform:scale(1.08);
+  background:#ff9fb5;
+}
+
+/* ===============================
+   ANIMATION
+================================ */
+
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.05)}
+  100%{transform:scale(1)}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- TIMELINE -->
+<div class="start-tile" id="startTile">
+  <h2>💗 Click Me 💗</h2>
+  <p>
+    So before starting, I would like to say that life has been so crazy that when I now look back at it hindsight, it feels like little experiences in life were always preparing me for your entry in my life (for which I am extremely grateful). For instance, and this is not part of OUR lore but it is crazy to think, I was making a 'roar dragon' video with arif to playfully mimic you or the fact that my roommate would tell me that zh is taking a minor in SEECS. so the unsaid part of our lore is (and one which u would say is not true) that maybe I always had a thing for u, maybe even before I knew I had a thing for you, maybe life knew all along. Anyways, lets move on to how it began.
+  </p>
+</div>
+
+<!-- ===================== -->
+<!-- TIMELINE -->
+<!-- ===================== -->
+
+<div class="timeline" id="timeline">
+
+  <!-- TEMPLATE EVENT -->
+  <!-- Change heading + paragraph later -->
+
+  <div class="event">
+    <h3>21st June 2023</h3>
+    <p>You texted me for the first time. On Twitter. And its crazy to think I have it screenshotted. Embarassing move by you, and even loser that you asked me if I hate you, but I also confessed on day 01 that u were my favourite twt account.</p>
+  </div>
+
+  <div class="event"><h3>July 2023</h3><p>We did talk for a while with meme that I sent u, the one that said 'is it weird to ask if u are one of the ppl who secretly hate me' ifykyk.</p></div>
+  <div class="event"><h3>27th October 2023</h3><p>Hangout when day. I cant believe u pulled a prank on me and im glad that u did, basis for what followed. Secret point is it is all thanks to you but as long as I am alive, I will never admit hehe.</p></div>
+  <div class="event"><h3>November 2023</h3><p>After the initial talk, it ended, and then u randomly sent me a meme on twitter saying 'I didn't mean to send u a meme' guess u did honey, also side note, why are u doing too much moves, when do I make a move in this story</p></div>
+  <div class="event"><h3>Decemeber 2023</h3><p>Tbf Novemeber and Decemeber of 2023, were both filled with healthy conversations. I dont know what clicked in the sense that we started talking like friends. I remember us having conversation about potential partner traits, eme boy stories, the casual flirting, the 'kitten jokes'. I sometimes think it was destiny preparing us for this later stage.</p></div>
+  <div class="event"><h3>January 2024</h3><p>I would say late December was IELTS time, u had ur exam in the first week of January, and so did I. Thankyou for teaching me everything that I know, and I was so excited that we were gonna be EU buddies, until someone ditched me.</p></div>
+  <div class="event"><h3>January 2024</h3><p>Random event I remember is we are having this conversation where we are discussing players (cricket) and u call me babar azam, I say no I am shubman gill and u say why bcs ur cute n all. AND this is the first time I realize oh is she flirting with me? again embarassing choice, but I would include this here bcs it is the first documented case of 'oh is there something' in my head so hehe. </p></div>
+  <div class="event"><h3>Febuaray 2024</h3><p>I'll talk less about this on ur birthday, but I'll always rememeber it as fuckup for not being able to wish you ur birthday and no contact followed and all so Ill skip the no contanct and talk about my feelings to reconcile going forward.</p></div>
+  <div class="event"><h3>October 2024</h3><p>I get my visa, I leave my job, I meet arif and arham. I tell them about lore, they tell me to meet you. I don't. I think the chapter is over. I tell them that I really liked her, she's an amazing person and just bcs she's not in my life anymore doesn't mean i hate her, but I think I wronged her (in my head bcs of missing birthday). But I also tell them maybe it was nothing, maybe I just felt a little more than she did. she made me happy, but thats just life bcs it was never that deep.</p></div>
+  <div class="event"><h3>November 2024</h3><p>I move here and Im caught up in life, and honestly I also read some of ur tweets about reconciliing with a friend - i think if it is about me? then I say no. All this time, arif's words are in my head 'nalkay sey paani tab ayega jab aap nalka khologay' as in make a move, and I am thinking what to do. I am lost, I defer the decision.</p></div>
+
+  <div class="event"><h3>December 2024</h3><p>Again parts of stories that are untold. I move to my new (current flat). I dont have an internet connection, only my data. I burn it within a week. Internet is still 10 days away. Blessing in disguise. My head is occupied with zarah hamid. I download (YES DOWNLOAD AS IN DOWNLOAD) all our chats from twitter and instagram. I read them, to see if there is room to negotiate, maybe there was, maybe there wasn't. Alot had been said, its been so long. I do istikhira, and the maleha arif me you dream, I tell this to arif, he is stoked. I decide I'll do something.</p></div>
+  <div class="event"><h3>December 2024</h3><p>I also tell it to my friend here called Jassim, our lore. not the dream. He is a seedha saadha person. He says Abdullah Bhai aap seedha unn sey bolein keh meri yeh niyyat hai aapko le kar, where do we stand? and I tell them bro aesa tou kuch tha hi nae, I cant do this. and I still cant believe when I look back at this, kya waqaiye aesa kuch tha. Life feels so unreal that now u are in my life. </p></div>
+  <div class="event"><h3>19th February 2025</h3><p>I send a cheeky little text. No reply for some time. I decide to send at my 12am so it is not too desperate, but I see maleha story and then Im like thats gonna ruin the point, I have to do it now. Khair, no reply. I sleep for a while. I wake up to a reply. And another, and alot of things are said which are not the topic here today. Khair move making done, now we even bitch. </p></div>
+  <div class="event"><h3>20th February 2025</h3><p>I tell arif about it, I'll disclose the full message I wrote to him. "idk how it ends but lets just say i wasn't stupid to invest all my emotions and feelings here. i feel validated and reciproacted. now pray that i get to marry her." and he says 'nalkay mei paani agaya?' and I say yes. I was so happy, the happiest man on earth, felt like a burden off my shoulders. The burden of closure. Thankyou for replying to me. But 20th Feburary, you didnt send a single message I think. And i thought, hmmm she is saying be in ur limits, it is not like old times sake. </p></div>
+  <div class="event"><h3>21st February 2025</h3><p>I had an exam and u texted me "Wie war diene Prufung" and im like hmm maybe she is taking interest in my daily life. Thats a sign. It was also pak vs india match, so we tweeted like old times sake. 2023 energy so crazy. Also just realised this, 2023 till 2025 (in the timeline) thats crazy long.</p></div>
+
+  <div class="event"><h3>March 2025</h3><p>We start talking like normal. I am also coming back to pakistan. It is ramadan season, we talk till late. We fight, we fix. Rinse and repeat. We grow close, this is the first time I start seeing me and u, as us. A concept. I think u do too (assuming). Very good times.</p></div>
+  <div class="event"><h3>7th April 2025</h3><p>I come to Islamabad, with the primary purpose of meeting you. You know me, I am an introvert and very conservative about talking stages btw men n women. I would never meet a girl, not someone I knew from twitter. But maybe bcs u were a real person fromm NUST and my friends knew you. Or maybe bcs destiny just wanted me to. I'm glad you are the only girl I have met in a romantic setting (even though uss waqt phatti hoyi thi). Khair we meet for the first time. Time flies by very fast. I touch temu red bag. We make a tissue flower, 4 hours have never felt shorter. I couldnt sleep the day before, nor do I care. For an introvert, meeting new ppl is physically draining, maybe it is too fuckboy coded, but it didnt feel that way to me. I go home, I read the letter you gave to me. Again that is one more pivotal moment which screams 'This is serious' to me. It really is the little things in life.</p></div>
+  <div class="event"><h3>8th May 2025</h3><p>You had a bad 2nd day at work, I tell you its gonna be okay. You say the magical words, if my memory does not fail me, this is the first time we have exchanged a 'Love You'. Too nonchalant for ur sorry ass to say I love you. But 'love you is also something. I think hmmmmmmmmmmmmmmmmmmmmmmmm is there something.</p></div>
+  <div class="event"><h3>May 2025</h3><p>I think post CBTL scene was that weird time where I am thinking, are we dating? Is she my girl? (thats such a crazy achievement for me in life) Or are we good friends? I know I like her but does she? She does like me, but is it romantic? Maybe it is romantic, is it a situationship for her? Khair we make too  many 'thats sus' jokes, flirting getting serious to the point u cant tell its flirting or meant, we are a couple of highschoolers lol.</p></div>
+  <div class="event"><h3>21 May 2025</h3><p>You go on a trip to Khanpur. You post a story with a guy (I hate that mf with all my life jbtw), and im like hmmmm competition? just kidding (but I do hate that mf), my point to include this here is that afterwards u tell me that I should have told you who I was going with. I say no no, but im kinda thinking wow are we dating dating? Why else would she care about me thinking about a guy? Anyways first major irrefutable sign if you ask me. Boy math.</p></div>
+
+  <div class="event"><h3>04 June 2025</h3><p>We are having a discussion on deal breakers. I tell you that if I do something that bothers you, you can tell me. And you say, 'Please keep in mind this is the person I fell for' FELL FOR???????? I do a wow react, u say 'If you do a wow react, Ill end you' I undo it, but wait a minute, did she just say FELL FOR? Oh yes, the feelings are mutual after all, we are dating i guess. And the rest is history I guess. It is difficult for me to pinpoint the exact time where either of us realized oh this is serious. For me, it was 21st February 2025, two days after I texted you. Maybe it was a little later for you, but somewhere along, there is an unsaid point in time where we just assumed. And thank God we did.</p></div>
+  <div class="event"><h3>07 June 2025</h3><p>Bari eid. I am at Paki Party in Freiberg. She sends me her FIT CHECK for the FIRST TIME EVER. Achievement unlocked, bbq is cooking I excuse myself to take a look at this fine piece of God's creation who has sent me a View Once picture (never send me a view once picture again). I am in awe, tbf I am in awe everytime I look at you waisay, but I remember being so excited. First time for everything.</p></div>
+  <div class="event"><h3>07 June 2025</h3><p>Alot happened on this day i guess. Remember I made you an Eid card too, SO EMBARASSING (would do it again tho) but today is gonna be about you, so I am not including my actions in this timeline so far. Oh main point of this bullet, we had our first gupshup session after someone was done giving me missed calls. too nonchalant for your sorry ass again. but first time hit like crack, i dont even remember what we talked about, but we did talk for long. Again basis for our weekly gupshup ritual.</p></div>
+  <div class="event"><h3>July - August 2025</h3><p>I remember this as a period where I got really really close to you. Beyond the young blood flirting, actual human conversations, family lore drops, intellectual conversations, heart to hearts, I mean I grew fond of you as a person. The person behind twt user roularappa. Not to say it was in this point in time, but this period was where we had no fights for SOOOOO long, just good vibes, growing together, maybe growing according to each other's likenesses. Maybe it was a testament that we can make this work, maybe we differ but we can work, I would like to make this work. So nothing significant here, but very pivotal I must say.</p></div>
+  <div class="event"><h3>12 October 2025</h3><p>First locket ever. I am fast forwarding alot bcs I realize I have typed alot. Its been 20 days since I have been populating and doing my research. I may have missed somethings in the recent past. But this day is where locket intimacy started. I love having u as a locket, it is my driving force really. If I ever forget what love is, I will look at ur locket, and remember what I am feeling rn is love. No matter what the content is.</p></div>
+  <div class="event"><h3>ONGOING</h3><p>Again I may be missing recent past events, bcs they do not need revision anyways. What I would like to say in the end is multifold actually. Starting from July 2023, and even before that if you take into account the twt commenting sagas, till February 2026, it has been what almost 03 years and if u take awayy the no contact, still 02 years. 02 years of getting to know u from scratch. From the person that you are on a bad day to the colour of socks (keeping it halal otherwise uno) u like to wear, I would say this has been probably the best human interaction in my life. One that makes my heart so full, one that makes me look back and repeat my lines 'I wasnt stupid to invest my feelings n emotions here'. Why and how u like me, or how it is mutual is going to be beyond me forever, but there's no chance I would do anything different if life makes me cross ur paths. I feel like this is our lore, good or bad, in the end it led me to you, and I am so grateful for you, for life, for us. For everything. I would not have it any other way, not any other person, because my heart longs for you and you only, like it will never long for anyone else, like it was never meant to long for anyone else. So my beautiful girl, thank you for bearing with me, thank you for being the cutest, hottest, sexiest, funniest girl God ever made, thank you for you. And I love you. Happy birthday sweetheart!! </p></div>
+  <div class="event"><h3>DISCLAIMER</h3><p>The timeline mainly focuses on your actions, and my thoughts to these actions. I think it would be fair to say I was down bad the day I texted you, so my point for not including the moves that I made (I have made more) is bcs I want this and today to just be about you. I am also sorry to mention us on ur birthday but it is also our no contact breaking anniversary so please bear with me in this regard.</p></div>
+    </div>
+
+  <!-- BACK BUTTON -->
+  <div style="text-align:center;">
+    <button id="backBtn">☕ Back to Café</button>
+  </div>
+
+</div>
+
+<script>
+
+
+const startTile = document.getElementById("startTile");
+const events = document.querySelectorAll(".event");
+const backBtn = document.getElementById("backBtn");
+
+let index = 0;
+
+startTile.onclick = () => {
+  startTile.style.display = "none";
+  showNextEvent();
+};
+
+function showNextEvent(){
+  if(index < events.length){
+    events[index].classList.add("show");
+    events[index].scrollIntoView({behavior:"smooth", block:"center"});
+    index++;
+
+    if(index === events.length){
+      setTimeout(() => {
+        backBtn.style.display = "inline-block";
+      }, 700);
+    }
+  }
+}
+
+events.forEach(event=>{
+  event.onclick = () => {
+    event.classList.toggle("open");
+    showNextEvent();
+  };
+});
+
+backBtn.onclick = () => {
+  window.location.href = "index.html?fromRecap=true";
+};
+
+</script>
+
+</body>
+</html>

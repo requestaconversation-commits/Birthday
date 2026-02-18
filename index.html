@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Birthday Scene</title>
+
+<!-- Cartoon Font -->
+<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  pointer-events: none; /* prevent clicks during fade */
+}
+
+
+body {
+  margin: 0;
+  background: black;
+  overflow: hidden;
+}
+
+/* ===== SCENE ===== */
+.scene {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: url("cafe.png");
+  background-size: cover;
+  background-position: center;
+  filter: saturate(1.2) contrast(1.1);
+}
+
+/* ===== AVATARS ===== */
+.character {
+  position: absolute;
+  bottom: 80px;
+  animation: breathe 3s infinite ease-in-out;
+}
+
+/* YOUR AVATAR */
+#me {
+  left: 15%;
+  width: 700px;
+}
+
+/* HER AVATAR */
+#her {
+  right: 20%;
+  width: 400px;
+}
+
+/* ===== CAKE ===== */
+.cake {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  animation: pulse 2s infinite ease-in-out;
+  z-index: 5;
+}
+
+/* ===== KNIFE ===== */
+#knife {
+  position:absolute;
+  width:150px;
+  bottom:400px;
+  left:50%;
+  transform: translateX(-50%) rotate(-45deg);
+  display:none;
+  z-index:10;
+}
+
+/* ===== DIALOGUE ===== */
+.dialogue {
+  position: absolute;
+  background: white;
+  padding: 16px 22px;
+  border-radius: 18px;
+  font-family: 'Comic Neue', cursive;
+  font-size: 22px;
+  max-width: 320px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.4);
+}
+
+/* Me bubble */
+#meText {
+  left: 20%;
+  bottom: 430px;
+  background: #ADD8E6; /* light blue */;
+}
+
+/* Her bubble */
+#herText {
+  right: 22%;
+  bottom: 450px;
+   background: #FFB6C1; /* light pink */
+}
+
+/* Narrator */
+#narratorText {
+  left: 50%;
+  transform: translateX(-50%);
+  top: 40px;
+  background: rgba(0,0,0,0.7);
+  color: white;
+}
+
+/* ===== BUTTONS ===== */
+#cutButton {
+  position:absolute;
+  top: 50px;
+  left:50%;
+  transform:translateX(-50%);
+  padding:16px 32px;
+  font-size:20px;
+  border-radius:12px;
+  cursor:pointer;
+  display:none;
+  font-family: 'Comic Neue', cursive;
+  background: #ffcc00;
+  border: none;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+  z-index:20;
+}
+#cutButton:hover { background: #ffdd33; }
+
+
+#aboutBtn {
+  position: absolute;
+  top: 70px;
+  right: 30px;
+  padding: 10px 18px;
+  border-radius: 20px;
+  border: none;
+  font-family: 'Comic Neue', cursive;
+  font-size: 16px;
+  background: pink;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: 0.3s;
+}
+
+#aboutBtn:hover {
+  transform: scale(1.1);
+}
+
+
+#recapButton {
+  position:absolute;
+  bottom:180px;  /* above cake */
+  left:50%;
+  transform:translateX(-50%);
+  padding:16px 32px;
+  font-size:20px;
+  border-radius:12px;
+  cursor:pointer;
+  display:none;
+  font-family: 'Comic Neue', cursive;
+  background:#4CAF50;
+  color:white;
+  border:none;
+  box-shadow:0px 4px 10px rgba(0,0,0,0.3);
+  z-index:20;  /* ensure above everything */
+}
+#recapButton:hover { background:#5cd65c; }
+
+/* ===== ANIMATIONS ===== */
+@keyframes breathe {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes pulse {
+  0% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.08); }
+  100% { transform: translateX(-50%) scale(1); }
+}
+
+@keyframes cutKnife {
+  0% { transform: translateX(-50%) translateY(-50px); }
+  50% { transform: translateX(-50%) translateY(20px); }
+  100% { transform: translateX(-50%) translateY(-50px); }
+}
+
+/* ===== OVERLAY ===== */
+.overlay {
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.25);
+}
+</style>
+</head>
+
+<body>
+<div id="cafeScene">
+<div class="scene">
+  <div class="overlay"></div>
+
+  <!-- Dialogue -->
+  <div class="dialogue" id="meText"></div>
+  <div class="dialogue" id="herText"></div>
+  <div class="dialogue" id="narratorText"></div>
+
+  <!-- Avatars -->
+  <img src="me.png" class="character" id="me">
+  <img src="her.png" class="character" id="her">
+
+  <!-- Cake -->
+  <img src="cake.png" class="cake" id="cake">
+
+  <!-- Knife -->
+  <img src="knife.png" id="knife">
+
+  <!-- Buttons -->
+  <button id="cutButton">Cut the Cake 🎂</button>
+  <button id="recapButton">RECAP</button>
+  <button id="aboutBtn" style="display:none;">💖 About You</button>
+
+</div>
+</div>
+
+<script>
+
+/* =======================
+   DIALOGUE DATA
+======================= */
+
+const introScript = [
+  { speaker: "narrator", text: "February 19th, the day that changed everything (kind of)." },
+  { speaker: "me", text: "Hello z, please keep in mind that this place is meant to be CBTL." },
+  { speaker: "her", text: "Yeah, we first met here." },
+  { speaker: "me", text: "No shit wow you remember. That's crazy haha." },
+  { speaker: "me", text: "Go on, cut the cake please." }
+];
+
+const postRecapScript = [
+  { speaker: "me", text: "So..." },
+  { speaker: "me", text: "That was our lore." },
+  { speaker: "me", text: "And honestly..." },
+  { speaker: "me", text: "I’d relive every part with you." },
+  { speaker: "me", text: "Alright so now it's a new day and I'm working on this again..." }
+];
+
+// Sample dialogue AFTER returning from Why I Like You page
+const afterWhyILikeU = [
+  { speaker: "me", text: "Back from the lore and what you mean to me, and if you prefer a simple birthday wish. here goes nothing. happy birthday partner, hope u have a great day and year ahead!! the real OG birthday wish haha. Serious talk now, I really hope ur day is as special as you are and this year is the happiest year of your life. I wish and pray that Allah Miyan always keeps you happy and smiling always in life, this year and for all the years to come. May you have many such years, and may I be always there to sing happy birthday for you. Thankyou for bringing all the joy in my life, your presence lights up rooms and conversations for me, wherever I go. I also wish you and your rib cage a very best of healths, and I hope that this year is a healthy year for u bcs sehat hai tou jaan hai, and jaan hai tou jahan hai. I wish and pray that p weeks are easier for you this year, and that ur iron levels skyrocket and ur pait dard is less and that the yearly flu does not get to u ever again. I wish and pray a very successful professional year for you, may you always continue being the strong girl boss baddie that you are, and may you achieve whatever u have in ur heart and dont tell anyone. Anyways, enough of the serious and 'its about u' talk and enough of me being decent, so um I wish and hope that I get to recreate the 'i make life hard' t-shirts with you, and twin funky socks with you, and exchange what colour underwear we are wearing, and observe the naara of ur pjs, and check out ur ass (metaphorically, unless hehe wink) in the fit checks, and drool over ur lockets, and meet u again at cbtl. I love you more than this birthday wish or any other thing or effort can ever potray. My life has been the best ever since feb 19, 2025 and you are a very big reason. Thankyou for exisitng, thankyou for doing everything that u do for us, thanku for laughing and making me laugh. Forever ur no.1 simp, supporter, fanboy, pervert, and lover. I love you and I hope that somebody I can really embody that love, give u all the love and care that u deserve, and i hope and pray that Allah miyan gives me the opportunity to do so. Manifesting celebrating all ur birthdays with you, and like u said 80th birthday with no teeth and ur dentures fall off when u try to blow the candles, I hope I am present at that moment. You are always going to be my twin, my soulmate, and my first and last love. Sorry for the incoherence, I am not thinking and just typing bcs if I think, then it will not be raw emotions. Thankyou for the 'hangout when' text and for everything that followed, I love you more than you will ever know, happy birthday once again to my gorgiii, kachra rani, labubu, chikni, pookie, and jaanuest jaan, I love you forever and always, this day until the last of my days." },
+];
+
+/* =======================
+   STATE
+======================= */
+
+let index = 0;
+let activeScript = [];
+let typing = false;
+
+/* =======================
+   ELEMENTS
+======================= */
+
+const meText = document.getElementById("meText");
+const herText = document.getElementById("herText");
+const narratorText = document.getElementById("narratorText");
+const cutButton = document.getElementById("cutButton");
+const recapButton = document.getElementById("recapButton");
+const cake = document.getElementById("cake");
+const knife = document.getElementById("knife");
+const aboutBtn = document.getElementById("aboutBtn");
+
+/* About You button (Why I Like You page) */
+aboutBtn.addEventListener("click", () => {
+  window.location.href = "whyilikeu.html";
+});
+
+/* =======================
+   TYPEWRITER
+======================= */
+
+function typeLine(element, text, callback){
+  typing = true;
+  element.innerHTML = "";
+  let i = 0;
+
+  const interval = setInterval(()=>{
+    element.innerHTML += text.charAt(i);
+    i++;
+
+    if(i >= text.length){
+      clearInterval(interval);
+      typing = false;
+      if(callback) callback();
+    }
+  },40);
+}
+
+/* =======================
+   SHOW LINE
+======================= */
+
+function showLine(){
+
+  if(typing) return;
+
+  meText.innerHTML = "";
+  herText.innerHTML = "";
+  narratorText.innerHTML = "";
+
+  if(index >= activeScript.length) return;
+
+  const line = activeScript[index];
+
+  const afterTyping = () => {
+    index++;
+
+    // If intro finished → show cut button
+    if(activeScript === introScript && index === activeScript.length){
+      cutButton.style.display = "block";
+    }
+
+    // If post-recap finished → show About You button
+    if(activeScript === postRecapScript && index === activeScript.length){
+      aboutBtn.style.display = "block";
+    }
+
+      // If afterWhyILikeYou finished → fade out automatically
+    if(activeScript === afterWhyILikeYou && index === activeScript.length){
+      setTimeout(()=>{
+        cafeScene.classList.add("fade-out");
+      },1500);
+    }
+  };
+
+  
+  if(line.speaker === "me") typeLine(meText, line.text, afterTyping);
+  if(line.speaker === "her") typeLine(herText, line.text, afterTyping);
+  if(line.speaker === "narrator") typeLine(narratorText, line.text, afterTyping);
+}
+
+/* =======================
+   CLICK TO ADVANCE
+======================= */
+
+document.body.addEventListener("click", showLine);
+
+/* =======================
+   CUT CAKE SEQUENCE
+======================= */
+
+cutButton.addEventListener("click", ()=>{
+
+  cutButton.style.display = "none";
+
+  knife.style.display = "block";
+  knife.style.animation = "cutKnife 1s ease-in-out forwards";
+
+  setTimeout(()=>{
+    cake.src = "cake_cut.png";
+  },500);
+
+  setTimeout(()=>{
+    knife.style.display = "none";
+
+    typeLine(
+      meText,
+      "On this day, let's first look back at the journey that has brought us here — let's recap our lore.",
+      ()=>{
+        recapButton.style.display = "block";
+      }
+    );
+
+  },1000);
+
+});
+
+/* =======================
+   RECAP BUTTON
+======================= */
+
+recapButton.addEventListener("click", ()=>{
+  window.location.href = "recap.html";
+});
+
+/* =======================
+   DETECT RETURN FROM OTHER PAGES
+======================= */
+
+const params = new URLSearchParams(window.location.search);
+const fromRecap = params.get("fromRecap");
+const fromMindMap = params.get("fromMindMap");
+
+// Decide which script to load
+if(fromMindMap === "true"){
+  activeScript = afterWhyILikeU;
+  index = 0;
+}else if(fromRecap === "true"){
+  activeScript = postRecapScript;
+  index = 0;
+}else{
+  activeScript = introScript;
+  index = 0;
+}
+
+/* =======================
+   START
+======================= */
+
+showLine();
+
+</script>
+
+
+</body>
+</html>

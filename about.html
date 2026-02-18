@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mind Map</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ------------------------- */
+/* Background Grid (Dotted) */
+/* ------------------------- */
+
+body {
+margin: 0;
+padding: 0;
+min-height: 100vh;
+font-family: 'Baloo 2', cursive;
+background-color: #f5e6c4;
+background-image: radial-gradient(gray 1px, transparent 1px);
+background-size: 15px 15px;
+display: flex;
+align-items: center;
+justify-content: center;
+overflow: hidden;
+position: relative;
+}
+
+/* Floating animation */
+@keyframes float {
+0% { transform: translateY(0px); }
+50% { transform: translateY(-10px); }
+100% { transform: translateY(0px); }
+}
+
+/* ------------------------- */
+/* Container */
+/* ------------------------- */
+
+.container {
+position: relative;
+width: 100%;
+max-width: 1200px;
+height: 90vh;
+}
+
+/* ------------------------- */
+/* Center Brain */
+/* ------------------------- */
+
+.center-brain {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 260px;
+height: 260px;
+cursor: pointer;
+z-index: 10;
+}
+
+.center-brain img {
+width: 100%;
+height: 100%;
+object-fit: contain;
+animation: float 4s ease-in-out infinite;
+transition: transform 0.3s ease;
+}
+
+.center-brain:hover img {
+transform: scale(1.08);
+}
+
+.center-text {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+color: white;
+font-weight: 700;
+font-size: 24px;
+text-align: center;
+z-index: 20;
+text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+pointer-events: none;
+}
+
+/* ------------------------- */
+/* Thought Bubbles */
+/* ------------------------- */
+
+.bubble {
+position: absolute;
+width: 220px;
+height: 170px;
+cursor: pointer;
+z-index: 5;
+}
+
+.bubble img {
+width: 100%;
+height: 100%;
+object-fit: contain;
+animation: float 5s ease-in-out infinite;
+transition: transform 0.3s ease;
+}
+
+.bubble:hover img {
+transform: scale(1.08);
+}
+
+.bubble-text {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+font-weight: 600;
+text-align: center;
+width: 75%;
+color: #333;
+font-size: 18px;
+z-index: 10;
+pointer-events: none;
+}
+
+/* ------------------------- */
+/* Center Modal */
+/* ------------------------- */
+
+.modal-overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0,0,0,0.5);
+display: none;
+z-index: 90;
+}
+
+.center-modal {
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 70%;
+max-width: 600px;
+max-height: 70vh;
+overflow-y: auto;
+background: white;
+padding: 25px;
+border-radius: 20px;
+box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+display: none;
+z-index: 100;
+font-size: 15px;
+line-height: 1.6;
+text-align: center;
+}
+
+/* ------------------------- */
+/* Connections */
+/* ------------------------- */
+
+svg {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: 1;
+pointer-events: none;
+}
+
+.connection-line {
+stroke: rgba(50,50,50,0.4);
+stroke-width: 2;
+fill: none;
+stroke-linecap: round;
+}
+
+</style>
+</head>
+<body>
+
+<!-- Back to Café Button -->
+<button id="backToCafe" 
+        style="
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 18px;
+            font-family: 'Baloo 2', cursive;
+            font-size: 16px;
+            background-color: #fff;
+            border: 2px solid #333;
+            border-radius: 8px;
+            cursor: pointer;
+            z-index: 50;
+        ">
+    Back to Café
+</button>
+
+
+<div class="container">
+
+<svg id="connections"></svg>
+
+<!-- Center Brain -->
+<div class="center-brain" id="centerBrain" data-text="Hello again, it is another day of working on this. Now I am thinking maybe this sounds to much centered on myself since maybe to u, it feels like it is wht 'I' like you. But my point of making this is what YOU mean to me bcs of the person that you are, and how it translates into my life and our relationship. Please go clockwise and click on each bubble.">
+<img src="brain.png" alt="Brain">
+<div class="center-text">Why I Like Your Ass (CLICK HERE)</div>
+</div>
+
+<!-- Bubbles (positions UNCHANGED) -->
+
+<div class="bubble" style="top: 5%; left: 40%;" data-text="Number 01 reason would be the fact that you are a very inclusive person in life, not just with me, with pretty much everyone  like ur friends n all. Ummm maybe inclusive is not the right word bcs it does not do justice to the emotion that I am trying to convey. Maybe I can explain it by an example in the sense, that you make me feel seen, feel enough, u make me feel like nothing else really matters when I have you. Its not even the word, u are a calming presence in that sense, again maybe hard to explain but like in the sense that u make me feel like life is just enough n complete if u love me and I love u.">
+<img src="bubble.png">
+<div class="bubble-text">Security</div>
+<div class="bubble-detail"></div>
+</div>
+
+<div class="bubble" style="top: 20%; right: 5%;" data-text="I know I say it enough that you are so jazbaati and u do so much ghussa and its so scary, but once that moment is over, u are always the first one to check on. Even if you are upset urself, u have this ability to put it aside. And I know we overlook it in the sense that 'u are this person' but that does not take away the fact that it takes alot of effort and courage and a very bara dil to be that person. thankyou for always being that person, thankyou for always trying to fix things even when its the hard thing to do (but dont fight me again ever).">
+<img src="bubble.png">
+<div class="bubble-text">Bigger Person</div>
+<div class="bubble-detail"></div>
+</div>
+
+<div class="bubble" style="top: 40%; right: -5%;" data-text="They say men are supposed to be make you feel safe n all, but mei kesay yeh baat samjhaon kay this one girl makes me feel so safe. Like again it is one of those emotions that is very hard for me to convey, and I have never brought it up but life just makes sense when we are vibing. I can text u, look at u, just feel ur presence when I am feeling anxious and it soothes me so much, like a toddler in a supermarket holding his mom's hand, just so he doesn't get lost. I see u as that hand, whenever I feel lost. Thankyou for always being there and keeping my back.">
+<img src="bubble.png">
+<div class="bubble-text">Safe Person</div>
+<div class="bubble-detail"></div>
+</div>
+
+<div class="bubble" style="bottom: 20%; right: 5%;" data-text="Oh my God, I could write about this for hours n hours. You are THE FUNNIEST GIRL EVER (girl bcs i am funnier than u). You have a great sense of humour and its great bcs I know we both value it so much bcs it means that I can laugh at u with ANYTHING. be it 'bhaiya apki mkc 100 baar' or 'iqbal said fuck it we ball' or 'doobtay ko 3k ka sahara' but you have this ability to make ppl laugh which is a virtue. Not to mention ur ability to laugh at everything. So what I mean to say is not plain old 'You are funny' but the fact that you have this trait of making things around u feel lighter, joyous and just uno light hearted. I love you, u are a pocket of sunshine.">
+<img src="bubble.png">
+<div class="bubble-text">Funny</div>
+<div class="bubble-detail"></div>
+</div>
+
+<div class="bubble" style="bottom: 5%; left: 50%;" data-text="I wanted to keep this nuumber 01 but u would have said hAw lOokS dOnT mAtTer, i mean they do and do not. But wallahi u are the prettiest, gorgeous-est, hottest, sexiest woman I have ever set my eyes on, and I ever will. U will think I am exaggerating but if u could just see urself from my eyes, u would just know. Everything about you is so perfect, you have pretty eyes (without makeup too bch), ur smile is SOOOO pretty, ur waist is slutty (pun intended). What I mean to say is God knows why and how I pulled a baddie like you, it is a generational pull to the extent that ppl will talk about 'who could have done better' and just know it is not me. forever down bad for you, and attracted to u in all the good (and bad) ways. I love the way you are, pls dont do makeup hehe.">
+<img src="bubble.png">
+<div class="bubble-text">Gorgiiiiii</div>
+<div class="bubble-detail"></div>
+</div>
+
+<div class="bubble" style="bottom: 10%; left: 10%;" data-text="You are a very kind person, and by kind I do not mean simply 'oh she helps the poor'. I think it is bcs of the way ur mom raised u to be, kindness also means smiling through the a tough patch, and refer to my earlier point of 'trying to fix things' even when it is tough - that is kindness too. Inspiring me to be kind is also kindness bcs even if be 1% more kind bcs of u, the world will be a better place. Asking me not to hate ms is also kindness, telling me to fix things with ara is also kindness, being present for ur friends birthdays and planning surprising for them is also kindness, telling me to give ur love to daisy is also kindness, doosron ki khushi mei khush hona is also kindness. All of these things may seem normal and the right thing to do bcs ur mom raised u to be kind, but it does not change the fact that you are a very kind person and that is what makes u beautiful.">
+<img src="bubble.png">
+<div class="bubble-text">Kindness</div>
+<div class="bubble-detail"></div>
+</div>
+
+<div class="bubble" style="top: 50%; left: -5%;" data-text="Maybe this one feels a bit selfish at first, but what I mean to say is I think we both agree that a relationship can only work when you are willing to compromise (both) - and it absoluetly makes me so happy that I am in love with a person that is so so understanding - be it the little things, be it small steps, be it anything at all - the fact that you are willing to listen is so beautiful. Uno I always saw you as an isb baddie the bad ones the ones who feel like they were always entitled to everything but I think I kinda fell for you when I realized wow she is v understanding, not bcs she is agreeable (we rarely agree) but the fact that u are always willing to adjust and meet in the middle and atleast listen to what the other person has to say (usually me) is very nice. Also part of being understanding is the very little things in life, maybe as small as the fact that if I take a little late to reply due to xyz reasons, or the biggest things like any of the larayis we have had, u are always willing to make things work and u put in the effort to understand which may not be said out loud all the time, but it is never overlooked.">
+<img src="bubble.png">
+<div class="bubble-text">Understanding</div>
+<div class="bubble-detail"></div>
+</div>
+
+<div class="bubble" style="top: 20%; left: 5%;" data-text="Literally what the central idea says. You have a cute little butt (pun intended), joking not joking. (I am not joking at all, beware :=0). And I could also include 100 other reasons why u are the best for example being a good listener, motivator and a strong independend girl but u get the point, one day I will tell u 100 reasons why I like u face to face, man to woman, and we kiss afterwards. khikhikhikhi">
+<img src="bubble.png">
+<div class="bubble-text">Surprise</div>
+<div class="bubble-detail"></div>
+</div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modalOverlay"></div>
+<div class="center-modal" id="centerModal"></div>
+
+<script>
+
+/* Connections */
+function drawConnections() {
+const svg = document.getElementById('connections');
+const center = document.getElementById('centerBrain').getBoundingClientRect();
+const bubbles = document.querySelectorAll('.bubble');
+
+svg.innerHTML = '';
+const svgRect = svg.getBoundingClientRect();
+
+const cx = center.left + center.width / 2 - svgRect.left;
+const cy = center.top + center.height / 2 - svgRect.top;
+
+bubbles.forEach(b => {
+const rect = b.getBoundingClientRect();
+const bx = rect.left + rect.width / 2 - svgRect.left;
+const by = rect.top + rect.height / 2 - svgRect.top;
+
+const path = document.createElementNS("http://www.w3.org/2000/svg","path");
+const dx = bx - cx;
+const dy = by - cy;
+
+const control1X = cx + dx * 0.3;
+const control1Y = cy + dy * 0.1;
+const control2X = cx + dx * 0.7;
+const control2Y = cy + dy * 0.9;
+
+path.setAttribute("d", `M ${cx} ${cy} C ${control1X} ${control1Y}, ${control2X} ${control2Y}, ${bx} ${by}`);
+path.classList.add('connection-line');
+svg.appendChild(path);
+});
+}
+
+window.addEventListener('resize', drawConnections);
+window.addEventListener('load', drawConnections);
+
+/* Bubble click -> open centered modal */
+document.querySelectorAll('.bubble').forEach(b => {
+b.addEventListener('click', function(e){
+e.stopPropagation();
+
+const modal = document.getElementById('centerModal');
+const overlay = document.getElementById('modalOverlay');
+
+modal.innerText = this.dataset.text;
+modal.style.display = "block";
+overlay.style.display = "block";
+});
+});
+
+/* Brain click -> open centered modal */
+document.getElementById('centerBrain').addEventListener('click', function(e){
+    e.stopPropagation();
+
+    const modal = document.getElementById('centerModal');
+    const overlay = document.getElementById('modalOverlay');
+
+    modal.innerText = this.dataset.text;  // pulls from data-text
+    modal.style.display = "block";
+    overlay.style.display = "block";
+});
+
+
+
+/* Close modal */
+document.getElementById('modalOverlay').addEventListener('click', function(){
+this.style.display = "none";
+document.getElementById('centerModal').style.display = "none";
+});
+
+
+document.getElementById('backToCafe').addEventListener('click', function() {
+    window.location.href = 'index.html?fromMindMap=true';
+});
+
+
+</script>
+
+</body>
+</html>
